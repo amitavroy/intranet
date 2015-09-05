@@ -1,6 +1,25 @@
-<div class="row" ng-controller="LoginCtrl">
-    <div class="col-sm-12">
-        <h1>Login to LABS</h1>
-        {{message}}
+<div ng-controller="LoginCtrl">
+    <div class="row">
+        <div class="col-sm-4 col-sm-push-3">
+            <h1>Login to LABS</h1>
+
+            <form ng-submit="doUserLogin(user)">
+                <div class="form-group">
+                    <input type="text"
+                           class="form-control"
+                           ng-model="user.username"
+                           placeholder="Enter your email address"/>
+                </div>
+                <div class="form-group">
+                    <input type="password"
+                           class="form-control"
+                           ng-model="user.password"
+                           placeholder="Enter your password"/>
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary"/>
+                </div>
+            </form>
+        </div>
     </div>
 </div>

@@ -1,7 +1,7 @@
 /**
  * Created by amitav on 9/5/15.
  */
-define(['angularAMD', 'angular-route', 'angular-cookies'], function(angularAMD) {
+define(['angularAMD', 'angular-route', 'angular-cookies'], function (angularAMD) {
     var app = angular.module("app", ['ngRoute', 'ngCookies']);
 
     app.config(function ($routeProvider) {
