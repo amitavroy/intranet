@@ -6,7 +6,7 @@ define(['app'], function (app) {
         var globalFact = {};
 
         globalFact.jsonConf = '';
-        globalFact.csrfToken = '';
+        globalFact.csrfTokenString = '';
 
         /*Loading the config json when the config object is not present*/
         globalFact.loadConfig = function () {
@@ -24,17 +24,19 @@ define(['app'], function (app) {
 
         /*Get the CSRF token from Laravel*/
         globalFact.loadCSRFToken = function () {
-            this.csrfToken = $http.get(tokenUrl).then(function (response) {
-                console.log('tokenUrl', tokenUrl);
-                console.log('csrfDataView', response);
+            var csrfRequest = $http.get('http://pmtools.app/get-csrf-token');
+
+            this.csrfTokenString = csrfRequest.then(function (response) {
+                console.log('Response token', response.data);
                 return response.data;
             });
-            return this.csrfToken;
+
+            return this.csrfTokenString;
         };
 
         /*Return the CSRF Token. If already present sent else http url*/
         globalFact.getCSRFToken = function () {
-            return this.csrfToken === '' ? this.loadCSRFToken() : this.csrfToken;
+            return this.csrfTokenString === '' ? this.loadCSRFToken() : this.csrfTokenString;
         };
 
         return globalFact;

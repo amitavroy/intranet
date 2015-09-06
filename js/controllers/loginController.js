@@ -9,8 +9,8 @@ define([
     app.controller('LoginCtrl', function ($scope, authFact, configFactory) {
         $scope.doUserLogin = function (user) {
             configFactory.getCSRFToken().then(function (data) {
-                /*console.log('CSRF', data);*/
-                authFact.checkLogin(user);
+                console.log('CSRF', data);
+                authFact.checkLogin(user, data);
             });
         }
     });

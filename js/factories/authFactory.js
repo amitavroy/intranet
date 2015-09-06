@@ -9,9 +9,11 @@ define(['app'], function(app) {
             $http.get('')
         };
 
-        authFact.checkLogin = function (credentials) {
-            console.log('User credentials', credentials);
+        authFact.checkLogin = function (credentials, data) {
             $http({
+                headers: {
+                    "X-XSRF-TOKEN": data
+                },
                 method: "POST",
                 url: 'http://pmtools.app/test-login',
                 dataType: 'jsonp'
